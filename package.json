@@ -1,0 +1,22 @@
+{
+  "name": "rs-school-nodejs-course",
+  "version": "1.0.0",
+  "description": "caesar-cipher-cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sapranovich/RS-School-NodeJS-course.git"
+  },
+  "author": "Sapranovich Andrei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sapranovich/RS-School-NodeJS-course/issues"
+  },
+  "homepage": "https://github.com/Sapranovich/RS-School-NodeJS-course#readme",
+  "dependencies": {
+    "minimist": "^1.2.5"
+  }
+}
