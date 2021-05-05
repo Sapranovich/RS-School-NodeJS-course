@@ -1,7 +1,8 @@
 const argv = require("minimist")(process.argv);
 const { pipeline } = require("stream");
-const fs = require("fs");
+const Stream = require('stream');
 
+const fs = require("fs");
 const { promisify } = require("util");
 
 const pipelineAsync = promisify(pipeline);
@@ -18,10 +19,18 @@ const params = {
 const readStream = fs.createReadStream(params.input);
 const writeStream = fs.createWriteStream(params.output);
 
+const transformStream = new Stream.Transform({
+	transform(chunk, encoding, callback) {
+		const transformed = chunk.toString();
+		callback(null, transformed);
+	},
+});
+
+
 
 (async () => {
   try {
-    await pipelineAsync(readStream, writeStream);
+    await pipelineAsync(readStream, transformStream, writeStream);
     console.log("Ok");
   } catch (err) {
     console.error("Error:", err);
