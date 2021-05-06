@@ -38,8 +38,8 @@ function caesarShift(text, shift) {
 }
 // ===================================================
 
-const readStream = fs.createReadStream(params.input);
-const writeStream = fs.createWriteStream(params.output);
+const readStream = params.input ? fs.createReadStream(params.input) : process.stdin;
+const writeStream = params.output ? fs.createWriteStream(params.output) : process.stdout;
 
 const transformStream = new Stream.Transform({
   transform(chunk, encoding, callback) {
@@ -47,6 +47,7 @@ const transformStream = new Stream.Transform({
     callback(null, transformText);
   },
 });
+
 
 (async () => {
   try {
