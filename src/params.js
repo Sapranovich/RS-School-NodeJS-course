@@ -1,4 +1,5 @@
 const argv = require("minimist")(process.argv);
+const fs = require('fs');
 
 const params = {
     shift: argv.s || argv.shift,
@@ -19,7 +20,20 @@ const params = {
     process.exit(1);
   }
   
-  if (params.action === "decode") params.shift = -params.shift;
+  if (params.input) {
+    fs.promises.access(params.input, fs.constants.F_OK).catch(err => {
+      process.stderr.write(`Файл ${params.input} ${err.code === 'ENOENT' ? 'отсутствует.' : 'не может быть прочитан.'}`);
+      process.exit(1);
+    });
+  }
+    
+  if (params.output) {
+    fs.promises.access(params.output, fs.constants.F_OK).catch(err => {
+      process.stderr.write(`Файл ${params.output} ${err.code === 'ENOENT' ? 'отсутствует.' : 'не может быть переписан.'}`);
+      process.exit(1);
+    });
+  }
 
+  if (params.action === "decode") params.shift = -params.shift;
 
   module.exports = params;
