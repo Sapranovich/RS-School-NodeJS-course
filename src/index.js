@@ -16,6 +16,22 @@ const params = {
   action: argv.a || argv.action,
 };
 
+//  проверка на валидность shift и action
+
+process.stdout.write("Привет! Это реализация задания онлайн курса «Разработка на Node.js» - Caesar cipher CLI tool \n");
+
+if (!params.shift) {
+  process.stderr.write("Наличие параметра shift обязателено. Попробуйте еще!");
+  process.exit(1);
+}
+
+if (params.action !== "encode" && params.action !== "decode") {
+  process.stderr.write("Наличие параметра action(encode/decode) обязателено. Попробуйте еще!");
+  process.exit(1);
+}
+
+if (params.action === "decode") params.shift = -params.shift;
+
 // ============== финкция  Caesar shift ==============
 function caesarShift(text, shift) {
   if (shift < 0) {
@@ -47,7 +63,6 @@ const transformStream = new Stream.Transform({
     callback(null, transformText);
   },
 });
-
 
 (async () => {
   try {
