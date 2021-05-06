@@ -2,7 +2,7 @@
 
 # Запуск приложения
 
-Для запуска приложения нужно зайти в папку src и ввести "node my_caesar_cli.js" и добавить следующие параметры:
+Для запуска приложения нужно зайти в папку src и ввести **node my_caesar_cli.js** и добавить следующие параметры:
 
 ```
 1. -s, --shift : сдвиг
@@ -22,3 +22,5 @@ node my_caesar_cli.js -s 3 -a encode -i ./input.txt
 node my_caesar_cli.js -s 3 -a encode -i ./input.txt -o ./output.txt
 node my_caesar_cli.js -s 3 -a decode
 ```
+
+Выход из **process.stdin** осуществляется **Ctrl+c**
