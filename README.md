@@ -25,8 +25,8 @@ node my_caesar_cli.js -s 3 -a decode
 
 При отрицательном сдвиге запись параметра **s/shift** должна выглядеть следующим образом:
 ```
-node my_caesar_cli.js **-s=-3** -a encode
-node my_caesar_cli.js **--shift=-3** --action encode
+node my_caesar_cli.js -s=-3 -a encode
+node my_caesar_cli.js --shift=-3 --action encode
 ```
 
 Выход из **process.stdin** осуществляется **Ctrl+c**
