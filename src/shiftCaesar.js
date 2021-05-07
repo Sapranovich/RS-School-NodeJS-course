@@ -1,6 +1,6 @@
 const shiftCaesar = (text, shift) => {
   if (shift < 0) {
-    return caesarShift(text, shift + 26);
+    return shiftCaesar(text, shift + 26);
   }
   let resault = "";
   for (let i = 0; i < text.length; i++) {
